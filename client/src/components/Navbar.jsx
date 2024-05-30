@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
 import { useSelector } from "react-redux";
+import MenuModal from "./MenuModal";
 
-const Navbar = ({ scrollY, openModal }) => {
+const Navbar = ({ scrollY }) => {
   const maxScroll = 300; // Adjust this value as needed
   const opacity = Math.max(0, Math.min(1, 1 - scrollY / maxScroll));
 
   const { currentUser } = useSelector((state) => state.user);
+
+  const [openModalMenu, setOpenModal] = useState(false);
+
+  const openModalMenuHandler = () => {
+    setOpenModal(true);
+  };
+
+  const closeModalMenuHandler = () => {
+    setOpenModal(false);
+  };
 
   return (
     <>
@@ -53,9 +64,23 @@ const Navbar = ({ scrollY, openModal }) => {
                 <div>
                   <Link to="/profile">
                     {currentUser ? (
-                      <img className="rounded-full h-7 w-7 object-cover" src={currentUser.avatar} alt="profile" />
+                      <>
+                        <img
+                          className="rounded-full h-7 w-7 object-cover"
+                          src={currentUser.avatar}
+                          alt="profile"
+                          onMouseEnter={openModalMenuHandler}
+                        />
+                        <MenuModal
+                          isOpenModal={openModalMenu}
+                          closeModalMenu={closeModalMenuHandler}
+                        />
+                      </>
                     ) : (
-                      <Link className="h-fit cursor-pointer rounded-full bg-black px-4 py-1.5 text-sm transition-colors md:text-base text-white hover:bg-accent-green-2">
+                      <Link
+                        className="h-fit cursor-pointer rounded-full bg-black px-4 py-1.5 text-sm transition-colors md:text-base text-white hover:bg-accent-green-2"
+                        to="./signin"
+                      >
                         Sign In
                       </Link>
                     )}
