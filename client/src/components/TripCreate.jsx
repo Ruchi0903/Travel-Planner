@@ -1,6 +1,5 @@
 import React from 'react';
 import './styles/TripCreate.css';
-import { Link } from 'react-router-dom';
 
 const TripCreate = ({ isOpen, closeModal }) => {
     if (!isOpen) return null;
@@ -83,4 +82,3 @@ const TripCreate = ({ isOpen, closeModal }) => {
   };
 
 export default TripCreate;
-    
