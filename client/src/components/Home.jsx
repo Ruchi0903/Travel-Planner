@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import Navbar from "./Navbar";
-import SignIn from "./SignIn";
 import "./styles/Home.css";
 import PartTwo from "./PartTwo";
 import PartThree from "./PartThree";
