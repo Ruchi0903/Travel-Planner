@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
-import './styles/MenuOver.css';
+import React, { useRef } from "react";
+import "./styles/MenuOver.css";
+import { Link } from "react-router-dom";
 // import { Link } from 'react-router-dom';
 
 const MenuModal = ({ isOpenModal, closeModalMenu }) => {
@@ -14,31 +15,21 @@ const MenuModal = ({ isOpenModal, closeModalMenu }) => {
   if (!isOpenModal) return null;
 
   return (
-    <div
-      className="m-overlay"
-      onMouseLeave={handleMouseLeave}
-    >
-      <div
-        className="md"
-        ref={modalRef}
-        onMouseLeave={handleMouseLeave}
-      >
+    <div className="m-overlay" onMouseLeave={handleMouseLeave}>
+      <div className="md" ref={modalRef} onMouseLeave={handleMouseLeave}>
         <div className="bodyModal">
-
-            <ul className='UL'/>
-                <li className="LI">Profile</li>
-                <div className="mt-1 max-w-screen-xl border-t border-solid border-gray-300 py-3 text-center text-gray-700 md:text-start"></div>
-                <li className="LI">Dashboard</li>
-                <div className="mt-1 max-w-screen-xl border-t border-solid border-gray-300 py-3 text-center text-gray-700 md:text-start"></div>
-                <li className="LI">Create Trip</li>
-                <div className="mt-1 max-w-screen-xl border-t border-solid border-gray-300 py-3 text-center text-gray-700 md:text-start"></div>
-                <li className="LI">Settings</li>
-                <div className="mt-1 max-w-screen-xl border-t border-solid border-gray-300 py-3 text-center text-gray-700 md:text-start"></div>
-                <li className="LI">LogOut</li> 
-            <ul/>
-
+          <ul className="UL" />
+          <li className="LI">Profile</li>
+          <div className="mt-1 max-w-screen-xl border-t border-solid border-gray-300 py-3 text-center text-gray-700 md:text-start"></div>
+          <li className="LI">Dashboard</li>
+          <div className="mt-1 max-w-screen-xl border-t border-solid border-gray-300 py-3 text-center text-gray-700 md:text-start"></div>
+          <Link to="/create-trip" className="LI">Create Trip</Link>
+          <div className="mt-1 max-w-screen-xl border-t border-solid border-gray-300 py-3 text-center text-gray-700 md:text-start"></div>
+          <li className="LI">Settings</li>
+          <div className="mt-1 max-w-screen-xl border-t border-solid border-gray-300 py-3 text-center text-gray-700 md:text-start"></div>
+          <Link to="/profile" className="LI">LogOut</Link>
+          <ul />
         </div>
-
       </div>
     </div>
   );

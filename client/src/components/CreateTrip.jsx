@@ -1,7 +1,15 @@
 import React from "react";
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
 const CreateTrip = () => {
+
+  const navigate = useNavigate();
+
+  const handleTrip = () => {
+    navigate('/new-trip');
+  }
+
   return (
     <>
       <Navbar />
@@ -55,9 +63,10 @@ const CreateTrip = () => {
               </ul>
               {/* <a href=""></a> */}
             </div>
-            <a
+            <button
+              onClick={handleTrip}
               className="mx-auto mt-6 flex w-fit items-center gap-2 whitespace-nowrap rounded-full bg-green-900 px-5 py-2.5 font-medium text-white shadow-md transition-colors hover:bg-accent-green-2 md:text-xl"
-              href="/"
+              href="/new-trip"
             >
               Create my first trip!
               <svg
@@ -75,7 +84,7 @@ const CreateTrip = () => {
                   d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
                 ></path>
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </div>

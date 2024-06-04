@@ -11,6 +11,7 @@ import TripCreate from "./components/TripCreate";
 import SignIn from "./components/SignIn";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
+import NewTrip from "./components/NewTrip";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/Part4" element={<PartFour />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/new-trip" element={<NewTrip />} />
           <Route path="/create-trip" element={<CreateTrip />} />
           {/* <Route path="/tripCreate" element={<TripCreate />} /> */}
           <Route element={<PrivateRoute />}>
