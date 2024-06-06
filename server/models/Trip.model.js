@@ -2,26 +2,24 @@ import mongoose from "mongoose"
 
 const TripSchema = new mongoose.Schema({
     userId: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'User'
+        type: mongoose.Schema.Types.ObjectId, ref: 'User',
+        required: true,
     },
     destination: {
-        type: String
+        type: String,
+        required: true,
     },
     startDate: {
-        type: String
+        type: String,
+        required: true,
     },
     endDate: {
-        type: String
+        type: String,
+        required: true,
     },
     places: [{
-        name: String,
-        location: {
-            lat: Number,
-            lng: Number
-        },
-        notes: String,
-        date: Date
-    }]
+        type: mongoose.Schema.Types.ObjectId, ref: 'Place'
+    }],
 });
 
 const Trip = mongoose.model('Trip', TripSchema);
