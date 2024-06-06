@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 const CreateTrip = () => {
 
@@ -12,7 +13,9 @@ const CreateTrip = () => {
 
   return (
     <>
+    <div className="PageBody">
       <Navbar />
+      <div className="CTbody">
       <div className="mt-12 flex min-h-[47px] w-full items-center justify-center ">
         <h2 className="min-w-fit items-center text-xl font-medium md:text-2xl mt-12 ml-10">
           Your Trips
@@ -88,6 +91,9 @@ const CreateTrip = () => {
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <Footer/>
     </>
   );
 };

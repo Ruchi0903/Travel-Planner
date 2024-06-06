@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
 import { useSelector } from "react-redux";
 import MenuModal from "./MenuModal";
 
-const Navbar = ({ scrollY }) => {
+const Navbar = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const maxScroll = 300; // Adjust this value as needed
   const opacity = Math.max(0, Math.min(1, 1 - scrollY / maxScroll));
 
@@ -24,9 +37,8 @@ const Navbar = ({ scrollY }) => {
     <>
       <nav className="navbar">
         <div
-          className={`navbar fixed top-0 flex w-full items-center justify-center z-50 transition-all ${
-            scrollY > 50 ? "navbar-hidden" : ""
-          }`}
+          className="navbar fixed top-0 flex w-full items-center justify-center z-50 transition-opacity duration-300"
+          style={{ opacity }}
         >
           <div className="mx-5 flex h-14 w-full max-w-screen-xl items-center justify-between md:h-16">
             <div className="flex gap-10">
@@ -38,7 +50,7 @@ const Navbar = ({ scrollY }) => {
                   height={29}
                 />
                 <h1 className="text-base/7 font-medium md:text-xl/8">
-                  Trip Planner AI
+                  Travel Assistant AI
                 </h1>
               </a>
               <div className="flex">
@@ -62,29 +74,27 @@ const Navbar = ({ scrollY }) => {
               </li>
               <li>
                 <div>
-                  <Link to="/profile">
-                    {currentUser ? (
-                      <>
-                        <img
-                          className="rounded-full h-7 w-7 object-cover"
-                          src={currentUser.avatar}
-                          alt="profile"
-                          onMouseEnter={openModalMenuHandler}
-                        />
-                        <MenuModal
-                          isOpenModal={openModalMenu}
-                          closeModalMenu={closeModalMenuHandler}
-                        />
-                      </>
-                    ) : (
-                      <Link
-                        className="h-fit cursor-pointer rounded-full bg-black px-4 py-1.5 text-sm transition-colors md:text-base text-white hover:bg-accent-green-2"
-                        to="./signin"
-                      >
-                        Sign In
-                      </Link>
-                    )}
-                  </Link>
+                  {currentUser ? (
+                    <>
+                      <img
+                        className="rounded-full h-9 w-9 object-cover"
+                        src={currentUser.avatar}
+                        alt="profile"
+                        onMouseEnter={openModalMenuHandler}
+                      />
+                      <MenuModal
+                        isOpenModal={openModalMenu}
+                        closeModalMenu={closeModalMenuHandler}
+                      />
+                    </>
+                  ) : (
+                    <Link
+                      className="h-fit cursor-pointer rounded-full bg-black px-4 py-1.5 text-sm transition-colors md:text-base text-white hover:bg-accent-green-2"
+                      to="./signin"
+                    >
+                      Sign In
+                    </Link>
+                  )}
                 </div>
               </li>
             </ul>

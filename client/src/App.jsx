@@ -7,7 +7,6 @@ import PartThree from "./components/PartThree";
 import PartFour from "./components/PartFour";
 import SignUp from "./components/SignUp";
 import CreateTrip from "./components/CreateTrip";
-import TripCreate from "./components/TripCreate";
 import SignIn from "./components/SignIn";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
@@ -28,7 +27,7 @@ const App = () => {
           <Route path="/create-trip" element={<CreateTrip />} />
           {/* <Route path="/tripCreate" element={<TripCreate />} /> */}
           <Route element={<PrivateRoute />}>
-            <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>
       </Router>

@@ -128,7 +128,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="p-3 max-w-lg mx-auto">
+    <div className="p-3 max-w-lg mx-auto" style={{ display: 'flex' , alignItems: 'center', justifyContent: 'center' , flexDirection: 'column' }}>
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
@@ -189,7 +189,7 @@ const Profile = () => {
           {loading ? "Loading..." : "Update"}
         </button>
       </form>
-      <div className="flex justify-between mt-5">
+      <div className="flex justify-between mt-5" style={{gap:'12pc'}}>
         <span
           onClick={handleDeleteUser}
           className="text-red-700 cursor-pointer"

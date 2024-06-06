@@ -63,17 +63,27 @@
   margin-right: auto;
 }
 
-.hawaii-illustration {
-  background-image: url("https://tripplanner.ai/_next/image?url=%2Fillustrations%2Fhawaii-illustration.png&w=1080&q=75");
-  background-size: contain;
-  background-repeat: no-repeat;
+.enclose {
   display: flex;
-  height: 35vh;
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-top: 5rem;
-  margin-left: 35rem;
+  margin: 20px 0px 20px 0px;
+}
+
+.IMG{
+  width: 40%;
+  height: 20%;
+}
+
+.hawaii-illustration {
+  background-color: antiquewhite;
+  /* background-image: url(/src/components/styles/images/vector_art.jpg); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  display: contents;
+  margin: 2rem;
 }
 
 .partFivelastdiv {

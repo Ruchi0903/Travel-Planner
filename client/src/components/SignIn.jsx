@@ -58,7 +58,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="p-3 max-w-lg mx-auto">
+    <div className="p-3 max-w-lg mx-auto" style={{ display: 'flex' , alignItems: 'center', justifyContent: 'center' , flexDirection: 'column' }}>
       <h1 className="text-3xl text-center font-semibold my-7">Sign In</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
@@ -95,43 +95,3 @@ const SignIn = () => {
 };
 
 export default SignIn;
-
-// import React from 'react';
-// import './styles/SignIn.css';
-// import { Link } from 'react-router-dom';
-
-// const SignIn = ({ isOpen, closeModal }) => {
-//   if (!isOpen) return null;
-
-//   return (
-//     <div className="modal-overlay" onClick={closeModal}>
-//       <div className="modal" onClick={(e) => e.stopPropagation()}>
-//         <button className="close-button" onClick={closeModal}>&times;</button>
-//         <h2 className="H2">Sign In</h2>
-//         <br />
-//         <form>
-//           <div className="form-group">
-//             <label>
-//               Username:&nbsp;&nbsp;
-//               <input type="text" name="username" />
-//             </label>
-//           </div>
-//           <div className="form-group">
-//             <label>
-//               Password:&nbsp;&nbsp;&nbsp;
-//               <input type="password" name="password" />
-//             </label>
-//           </div>
-//           <button type="submit" className="submit-button">Submit</button>
-//         </form>
-//         <br />
-//         <p>don't have account :&nbsp;&nbsp;</p>
-//         <Link to="/signup">
-//             <p className="switch2SignUp">Sign Up</p>
-//         </Link>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SignIn;
