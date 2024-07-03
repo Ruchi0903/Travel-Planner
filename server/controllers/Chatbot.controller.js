@@ -12,16 +12,32 @@ export const chatBotHandler = async (req, res, next) => {
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
         // Validate the structure of the history array
-        const history = req.body.history.map(item => ({
-            role: item.role,
-            parts: Array.isArray(item.parts) ? item.parts : [item.parts] // Ensure parts is always an array
-        }));
+        const history = req.body.history.map(item => {
+            if (typeof item !== 'object' || !item.role || !item.parts) {
+                throw new Error("Invalid history item structure");
+            }
+            return {
+                role: item.role,
+                parts: Array.isArray(item.parts) ? item.parts : [item.parts] // Ensure parts is always an array
+            };
+        });
 
         const chat = model.startChat({ history });
 
         const msg = req.body.message;
 
+        // Ensure the message is a string
+        if (typeof msg !== 'string') {
+            throw new Error("Invalid message type");
+        }
+
         const result = await chat.sendMessage(msg);
+
+        // Ensure the response has a text property
+        if (!result.response || typeof result.response.text !== 'function') {
+            throw new Error("Invalid response from AI model");
+        }
+
         const response = await result.response.text();
 
         console.log("Response from model:", response);

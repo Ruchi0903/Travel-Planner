@@ -22,32 +22,40 @@
     font-weight: bold;
   }
   
-  input[type="text"],
-  input[type="date"] {
-    width: calc(100% - 22px);
+  input[type="text"], input[type="date"] {
+    width: -webkit-fill-available;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  .dates {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 20px;
-    margin-left: 20px;
 }
   
-  .add-destination {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #f44336;
-    color: #fff;
+  .dates {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     margin-bottom: 20px;
-  }
+}
+  
+.add-destination {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #2d572c;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.medTextSize{
+  font-weight: 700;
+}
+
+.chain-symbol {
+  color: #2d572c;
+  font-size: 24px;
+}
   
   .H3{
     font-size: 30px;
@@ -57,11 +65,12 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #d9534f;
+    background-color: #ff0800;
     color: #fff;
     margin-top: 10px;
     margin-bottom: 10px;
-  }
+    margin-left: 337px;
+}
   
   .activities {
     margin-bottom: 20px;
