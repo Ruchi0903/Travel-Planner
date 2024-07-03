@@ -43,9 +43,9 @@ const FinalPlannedTrip = () => {
       url: 'https://weatherapi-com.p.rapidapi.com/current.json',
       params: { q: `${latitude},${longitude}` },
       headers: {
-        'x-rapidapi-key': '8124720ed9msh83ce956bc9ee16ap1d6892jsnd4ebe9418349',
-        'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com'
-      }
+        'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY_W,
+        'x-rapidapi-host': process.env.REACT_APP_X_RAPIDAPI_HOST_W,
+      },
     };
 
     try {
@@ -62,8 +62,8 @@ const FinalPlannedTrip = () => {
       url: 'https://air-quality.p.rapidapi.com/current/airquality',
       params: { lon: longitude, lat: latitude },
       headers: {
-        'x-rapidapi-key': '8124720ed9msh83ce956bc9ee16ap1d6892jsnd4ebe9418349',
-        'x-rapidapi-host': 'air-quality.p.rapidapi.com'
+        'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY_AQ,
+        'x-rapidapi-host': process.env.REACT_APP_X_RAPIDAPI_HOST_AQ,
       }
     };
 

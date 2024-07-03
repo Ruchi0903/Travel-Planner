@@ -7,6 +7,7 @@ import authRouter from "./routes/Auth.route.js";
 import tripRouter from "./routes/Trip.route.js";
 import { chatBotHandler } from "./controllers/Chatbot.controller.js";
 import cookieParser from 'cookie-parser';
+import path from 'path';
 
 dotenv.config();
 
@@ -17,6 +18,8 @@ mongoose.connect(process.env.MONGO)
     .catch((err) => {
         console.log(err);
     });
+
+    const __dirname = path.resolve();
 
 const app = express();
 const port = process.env.PORT || 8000; // Make sure this port matches your backend server port
@@ -32,6 +35,12 @@ app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/trip', tripRouter); // Ensure this is correctly mapped
 app.use('/api/chatbot', chatBotHandler);
+
+app.use(express.static(path.join(__dirname, '/client/dist')));
+
+app.get('*',(req,res) => {
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+})
 
 // MIDDLEWARES
 app.use((err, req, res, next) => {

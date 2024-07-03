@@ -108,8 +108,8 @@ const Preferences = () => {
         url: 'https://booking-com.p.rapidapi.com/v1/hotels/locations',
         params: { name: destination, locale: 'en-gb' },
         headers: {
-          'x-rapidapi-key': '8124720ed9msh83ce956bc9ee16ap1d6892jsnd4ebe9418349',
-          'x-rapidapi-host': 'booking-com.p.rapidapi.com'
+          'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY_DID,
+          'x-rapidapi-host': process.env.REACT_APP_X_RAPIDAPI_HOST_DID,
         }
       };
 
@@ -190,8 +190,8 @@ const Preferences = () => {
           children_ages: '5,0'
         },
         headers: {
-          'x-rapidapi-key': '8124720ed9msh83ce956bc9ee16ap1d6892jsnd4ebe9418349',
-          'x-rapidapi-host': 'booking-com.p.rapidapi.com'
+          'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY_DesData,
+          'x-rapidapi-host': process.env.REACT_APP_X_RAPIDAPI_HOST_DesData, 
         }
       };
 
