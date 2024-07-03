@@ -11,6 +11,8 @@ import SignIn from "./components/SignIn";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
 import NewTrip from "./components/NewTrip";
+import Chatbot from "./CHATBOT/Chatbot";
+import FlightSearchForm from "./components/FlightSearch/FlightSearchForm";
 
 const App = () => {
   return (
@@ -27,7 +29,10 @@ const App = () => {
           <Route path="/create-trip" element={<CreateTrip />} />
           {/* <Route path="/tripCreate" element={<TripCreate />} /> */}
           <Route element={<PrivateRoute />}>
-          <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
+            {/* CHATBOT */}
+            <Route path="/chatbot" element={<Chatbot />} />
+            <Route path="/flightapiimpl" element={<FlightSearchForm />} />
           </Route>
         </Routes>
       </Router>
@@ -36,6 +41,5 @@ const App = () => {
 };
 
 export default App;
-
 
 // Collaboration working fine with feature-akshay as branch
