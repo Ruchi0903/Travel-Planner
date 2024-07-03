@@ -1,13 +1,32 @@
-import Trip from "../models/Trip.model.js"
+import Trip from '../models/Tripdata.js';
+import { errorHandler } from '../utils/error.js';
 
+// Create a new trip
 export const createTrip = async (req, res, next) => {
-    try {
-        const { userId, destination, startDate, endDate, places } = req.body;
-        const trip = await Trip.create({ userId, destination, startDate, endDate, places });
+  const { user_id, trip_name, destinations, activities, peopleCount, travelType } = req.body;
 
-        res.status(400).json({ trip });
+  try {
+    // Create a new trip document
+    const newTrip = new Trip({
+      user_id,
+      trip_name,
+      destinations,
+      activities,
+      peopleCount,
+      travelType
+    });
 
-    } catch (error) {
-        next(error);
-    }
-}
+    // Save the trip to the database
+    const savedTrip = await newTrip.save();
+    res.status(201).json(savedTrip);
+  } catch (error) {
+    console.error(error); // Log the error
+    next(errorHandler(500, "Failed to create trip"));
+  }
+};
+
+// Dummy function for trip options
+export const getTripOptions = (optionType) => (req, res, next) => {
+  // Implement logic for fetching trip options based on optionType
+  res.json({ message: `Fetching ${optionType} options...` });
+};

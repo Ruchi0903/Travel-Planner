@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import {
   signInStart,
   signInSuccess,
@@ -11,6 +11,8 @@ import OAuth from "./OAuth.jsx";
 const SignIn = () => {
   const [formData, setFormData] = useState({});
 
+  const { currentUser } = useSelector((state) => state.user);
+
   // const [error, setError] = useState(null);
   // const [loading, setLoading] = useState(false);
   const { loading, error } = useSelector((state) => state.user);
@@ -20,10 +22,18 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
+    if (currentUser) {
+      console.log(currentUser);
+      setFormDataProfile({
+        ...formDataProfile,
+        [e.target.id]: e.target.value,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.id]: e.target.value,
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -40,6 +50,7 @@ const SignIn = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+      console.log(data);
       if (data.success === false) {
         // setLoading(false);
         // setError(data.message);

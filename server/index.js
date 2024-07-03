@@ -1,33 +1,37 @@
 import express from "express";
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import userRouter from "./routes/User.route.js";
 import authRouter from "./routes/Auth.route.js";
 import tripRouter from "./routes/Trip.route.js";
-import cookieParser from 'cookie-parser'
+import { chatBotHandler } from "./controllers/Chatbot.controller.js";
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 mongoose.connect(process.env.MONGO)
     .then(() => {
-        console.log("Connected to mongodb")
+        console.log("Connected to MongoDB");
     })
     .catch((err) => {
-        console.log(err)
-    })
+        console.log(err);
+    });
 
 const app = express();
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 8000; // Make sure this port matches your backend server port
+
+// Use CORS middleware
+app.use(cors());
 
 app.use(express.json());
 app.use(cookieParser());
 
-
 // ROUTES
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
-app.use('/api/trip', tripRouter);
-
+app.use('/api/trip', tripRouter); // Ensure this is correctly mapped
+app.use('/api/chatbot', chatBotHandler);
 
 // MIDDLEWARES
 app.use((err, req, res, next) => {
@@ -37,10 +41,9 @@ app.use((err, req, res, next) => {
         success: false,
         statusCode,
         message,
-    })
-})
-
+    });
+});
 
 app.listen(port, () => {
-    console.log(`Server is running on ${port}`)
-})
+    console.log(`Server is running on ${port}`);
+});

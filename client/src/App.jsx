@@ -11,6 +11,9 @@ import SignIn from "./components/SignIn";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
 import NewTrip from "./components/NewTrip";
+import Preferences from "./components/Preferences";
+import Chatbot from "./components/Chatbot";
+import FinalPlannedTrip from "./components/FinalPlannedTrip";
 
 const App = () => {
   return (
@@ -25,6 +28,9 @@ const App = () => {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/new-trip" element={<NewTrip />} />
           <Route path="/create-trip" element={<CreateTrip />} />
+          <Route path="/chatbot" element = {<Chatbot/>}/>
+          <Route path="/finaltrip" element = {<FinalPlannedTrip/>}/>
+          <Route path="/preferences" element={<Preferences/>}/>
           {/* <Route path="/tripCreate" element={<TripCreate />} /> */}
           <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
